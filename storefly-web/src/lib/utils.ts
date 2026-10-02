@@ -38,6 +38,6 @@ export function formatDateTime(dateString?: string): string {
 export function getFileUrl(path?: string): string {
   if (!path) return "";
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  const baseUrl = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000").replace(/\/+$/, '');
   return `${baseUrl}${path.startsWith("/") ? "" : "/"}${path}`;
 }
